@@ -1,0 +1,484 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><title>Federico Daniel Abram</title><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#efede4;
+    --surface:#fbfaf5;
+    --surface-2:#e4e0d2;
+    --ink:#1e2016;
+    --ink-soft:#5a5c4e;
+    --ink-faint:#8b8c79;
+    --line:#d3cfbf;
+    --accent:#b76a14;
+    --accent-ink:#ffffff;
+    --status-wait:#a6791a;
+    --status-done:#3f7a53;
+    --status-drop:#ad4c33;
+    --shadow: 0 1px 0 var(--line);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#17180f;
+      --surface:#1f2016;
+      --surface-2:#2a2b1d;
+      --ink:#ece8d9;
+      --ink-soft:#afac97;
+      --ink-faint:#787a65;
+      --line:#38392a;
+      --accent:#dd9a43;
+      --accent-ink:#1a1206;
+      --status-wait:#d8ae46;
+      --status-done:#5fb57c;
+      --status-drop:#d6755a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#17180f;
+    --surface:#1f2016;
+    --surface-2:#2a2b1d;
+    --ink:#ece8d9;
+    --ink-soft:#afac97;
+    --ink-faint:#787a65;
+    --line:#38392a;
+    --accent:#dd9a43;
+    --accent-ink:#1a1206;
+    --status-wait:#d8ae46;
+    --status-done:#5fb57c;
+    --status-drop:#d6755a;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.5;
+  }
+  .page{
+    max-width:880px;
+    margin:0 auto;
+    padding:40px 24px 80px;
+  }
+  .langswitch{
+    text-align:right;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;
+    margin-bottom:10px;
+  }
+  .langswitch a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);}
+  .langswitch a:hover{color:var(--accent);border-color:var(--accent);}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:0 0 10px;
+  }
+  .eyebrow::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+  h1,h2,h3{
+    font-family:"Big Shoulders Display","Arial Narrow",sans-serif;
+    text-wrap:balance;
+    margin:0;
+    color:var(--ink);
+  }
+  .mono{font-family:"IBM Plex Mono",monospace;}
+  a{color:var(--accent);}
+
+  /* header */
+  header.manifest{
+    border:1px solid var(--line);
+    background:var(--surface);
+    border-top:6px solid var(--accent);
+    padding:28px 30px 24px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:18px;
+    margin-bottom:44px;
+  }
+  header.manifest .id-block h1{
+    font-size:clamp(34px,5.6vw,52px);
+    font-weight:800;
+    letter-spacing:.01em;
+    line-height:.96;
+  }
+  header.manifest .role{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:13px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-top:8px;
+  }
+  header.manifest .contact{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    text-align:right;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+  }
+  header.manifest .contact a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);}
+  header.manifest .contact a:hover{color:var(--accent);border-color:var(--accent);}
+
+  section{margin-bottom:46px;}
+
+  .lede{
+    font-size:17.5px;
+    color:var(--ink-soft);
+    max-width:66ch;
+  }
+
+  /* case study card */
+  .case{
+    border:1px solid var(--line);
+    background:var(--surface);
+  }
+  .case + .case{margin-top:20px;}
+  .case-head{
+    padding:22px 26px;
+    border-bottom:1px solid var(--line);
+    background:var(--surface-2);
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .case-head h2{font-size:30px;font-weight:700;}
+  .case.compact .case-head h2{font-size:24px;}
+  .case-meta{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-top:6px;
+    letter-spacing:.02em;
+  }
+  .case-body{padding:26px;}
+  .case-body > * + *{margin-top:26px;}
+  .case-body p{color:var(--ink-soft);max-width:68ch;}
+
+  .flow{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+  .flow li{
+    display:grid;
+    grid-template-columns:30px 1fr;
+    gap:12px;
+    align-items:baseline;
+  }
+  .flow .num{
+    font-family:"IBM Plex Mono",monospace;
+    color:var(--accent);
+    font-weight:500;
+    font-size:13px;
+  }
+  .flow .txt{color:var(--ink-soft);}
+  .flow .txt b{color:var(--ink);font-weight:600;}
+
+  .chipwrap{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    background:var(--surface-2);
+    color:var(--ink-soft);
+  }
+  .stackrow{display:grid;gap:14px;grid-template-columns:repeat(2,1fr);}
+  .stackrow .stackitem{font-size:13px;}
+  .stackrow .stackitem .label{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-faint);
+    display:block;
+    margin-bottom:6px;
+  }
+
+  .highlights{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+  .highlights li{
+    display:grid;
+    grid-template-columns:16px 1fr;
+    gap:12px;
+    color:var(--ink-soft);
+  }
+  .highlights li::before{
+    content:"";
+    width:7px;height:7px;
+    margin-top:7px;
+    background:var(--accent);
+  }
+  .highlights b{color:var(--ink);font-weight:600;}
+
+  .result{
+    border-left:3px solid var(--accent);
+    padding:4px 0 4px 16px;
+    color:var(--ink-soft);
+  }
+  .result strong{color:var(--ink);}
+
+  .links{display:flex;flex-wrap:wrap;gap:18px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;}
+  .links a{text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;}
+  .links a:hover{border-color:var(--accent);}
+
+  .xp{display:grid;gap:22px;}
+  .xp-item{display:grid;grid-template-columns:200px 1fr;gap:18px;}
+  .xp-item .when{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;
+    color:var(--ink-faint);
+    font-variant-numeric:tabular-nums;
+    padding-top:3px;
+  }
+  .xp-item .what h3{font-size:19px;font-weight:600;font-family:"IBM Plex Sans";}
+  .xp-item .what .org{color:var(--accent);font-size:13.5px;margin:2px 0 6px;}
+  .xp-item .what p{color:var(--ink-soft);font-size:14.5px;margin:0;max-width:60ch;}
+
+  .edu{display:grid;gap:16px;}
+  .edu-item .label{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-faint);
+    margin-bottom:4px;
+  }
+  .edu-item p{color:var(--ink-soft);margin:0;max-width:62ch;font-size:14.5px;}
+
+  footer{
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11.5px;
+    color:var(--ink-faint);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  @media (max-width:640px){
+    header.manifest{flex-direction:column;align-items:flex-start;}
+    header.manifest .contact{text-align:left;}
+    .stackrow{grid-template-columns:1fr;}
+    .xp-item{grid-template-columns:1fr;gap:4px;}
+  }
+</style>
+</head><body>
+
+<div class="page">
+
+  <div class="langswitch"><a href="es/">Español</a></div>
+
+  <header class="manifest">
+    <div class="id-block">
+      <h1>Federico Daniel Abram</h1>
+      <div class="role">Forward Deployed Engineer · Software Development</div>
+    </div>
+    <div class="contact">
+      <span>La Plata, Buenos Aires, Argentina</span>
+      <a href="mailto:federicodanielabram@gmail.com">federicodanielabram@gmail.com</a>
+      <span>+54 2364 689946</span>
+      <a href="https://github.com/federicodanielabram">github.com/federicodanielabram</a>
+      <a href="https://www.linkedin.com/in/federico-daniel-abram-905b31449">linkedin.com/in/federico-daniel-abram-905b31449</a>
+    </div>
+  </header>
+
+  <section>
+    <p class="lede">I build software for real businesses: I get into the operation until I understand how it actually works, then I design the system that solves it end to end &mdash; database, backend, and the interface the person who runs it day to day uses, leaning on cutting-edge AI tools to move fast from idea to working system. My most complete case is <b>Logística 7 Cajas</b>: I designed, built, and maintain in production the delivery system the company uses daily.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Stack</p>
+    <div class="chipwrap">
+      <span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">Vite</span><span class="chip">React Router</span>
+      <span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">SQL</span>
+      <span class="chip">HTML/CSS</span><span class="chip">PWA</span><span class="chip">Vercel</span><span class="chip">GitHub Actions</span>
+      <span class="chip">Godot</span><span class="chip">Unreal Engine</span><span class="chip">C#</span>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Case study</p>
+    <div class="case">
+      <div class="case-head">
+        <div>
+          <h2>Logística 7 Cajas</h2>
+          <div class="case-meta">CUSTOM-BUILT DELIVERY SYSTEM · IN PRODUCTION SINCE 2026</div>
+        </div>
+      </div>
+      <div class="case-body">
+
+        <p>7 Cajas Distribuidora is a wholesale distributor of premium high-oleic sunflower oil (SEDA and LOT brands) for the food service and industrial sector. Deliveries to stores were coordinated over WhatsApp from a spreadsheet built by hand in Google Sheets, with no real-time visibility into who had delivered what. I designed and shipped to production a system that doesn't ask anyone to change the way they work &mdash; the spreadsheet remains the source of truth, and turns into a coordinated delivery run with live tracking, without any Google account or API involved.</p>
+
+        <div>
+          <div class="case-meta" style="margin-bottom:12px;">HOW IT WORKS</div>
+          <ol class="flow">
+            <li><span class="num">01</span><span class="txt">The salesperson builds the route as always, in a Sheets tab.</span></li>
+            <li><span class="num">02</span><span class="txt">Selects everything, copies it, and pastes it into the web panel. A <b>custom parser</b> interprets the text and shows a preview before confirming.</span></li>
+            <li><span class="num">03</span><span class="txt">Each driver opens the app on their phone, picks which of the day's stops are theirs, and orders them.</span></li>
+            <li><span class="num">04</span><span class="txt">As they deliver, the panel updates itself: a live per-driver checklist &mdash; pending / delivered / skipped.</span></li>
+          </ol>
+        </div>
+
+        <div class="stackrow">
+          <div class="stackitem">
+            <span class="label">Panel (salesperson / admin)</span>
+            <div class="chipwrap">
+              <span class="chip">React</span><span class="chip">Vite</span><span class="chip">React Router</span><span class="chip">Supabase Auth</span>
+            </div>
+          </div>
+          <div class="stackitem">
+            <span class="label">Driver app</span>
+            <div class="chipwrap">
+              <span class="chip">React</span><span class="chip">Vite</span><span class="chip">PWA</span><span class="chip">dnd-kit</span>
+            </div>
+          </div>
+          <div class="stackitem">
+            <span class="label">Backend</span>
+            <div class="chipwrap">
+              <span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">Realtime</span><span class="chip">Row-Level Security</span>
+            </div>
+          </div>
+          <div class="stackitem">
+            <span class="label">Infrastructure</span>
+            <div class="chipwrap">
+              <span class="chip">Vercel</span><span class="chip">GitHub Actions</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="case-meta" style="margin-bottom:12px;">ENGINEERING DECISIONS</div>
+          <ul class="highlights">
+            <li><span><b>Custom, deterministic parser</b> (no AI) that turns the pasted spreadsheet into structured data, isolated in a single file so format changes never touch the rest of the system.</span></li>
+            <li><span><b>Real-time sync</b> between the panel and the drivers via Supabase Realtime: every status change shows up instantly on both ends.</span></li>
+            <li><span><b>In-progress stops are frozen:</b> if the salesperson updates the route mid-day, it won't overwrite work a driver has already started delivering.</span></li>
+            <li><span><b>Hand-mapped native navigation:</b> Android's back button/gesture is handled screen by screen across the whole PWA, so it never breaks the driver's flow.</span></li>
+            <li><span><b>Zero-downtime schema evolution:</b> six incremental Supabase migrations (multi-product, split payment, new statuses) applied to a database with real data in daily use.</span></li>
+            <li><span><b>Infrastructure upkeep:</b> automated keep-alive via GitHub Actions so the free Supabase project never pauses from inactivity.</span></li>
+          </ul>
+        </div>
+
+        <p class="result"><strong>In daily use since 2026</strong>, replacing manual WhatsApp coordination and hand-built spreadsheets. Drivers completely dropped WhatsApp for coordinating deliveries, and office staff stopped typing message by message: with one button they copy each client's data and paste it in, marking each one green as it's processed, keeping track of what's left without losing the thread. The delivery history, once drawers full of paper receipts, is now digital and searchable, improving and streamlining the administrative workflow. According to the drivers themselves, the load of tasks that used to be tedious &mdash; reconfirming who delivered what, chasing scattered messages &mdash; dropped noticeably. Four tagged releases (v1.0 → v1.3) and continuous iteration based on what they themselves ask for.</p>
+
+        <div class="links">
+          <a href="https://github.com/federicodanielabram/logistica-7cajas">→ source code</a>
+          <a href="https://7cajasdistribuidora.com">→ 7 Cajas website</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="case compact">
+      <div class="case-head">
+        <div>
+          <h2>7 Cajas Institutional Website</h2>
+          <div class="case-meta">LANDING PAGE · FRONTEND · CUSTOM DOMAIN</div>
+        </div>
+      </div>
+      <div class="case-body">
+
+        <p>Beyond the delivery system, 7 Cajas needed a public face to showcase the product to potential customers. I built and maintain the company's institutional website, working alongside a designer for the visual side: framework-free HTML/CSS/JS, focused on loading fast and looking good on phones, which is where most visits come from. It now runs in production on its own domain (7cajasdistribuidora.com).</p>
+
+        <ul class="highlights">
+          <li><span><b>Product slider.</b></span></li>
+          <li><span><b>Mobile-first responsive:</b> several rounds of layout fine-tuning specifically for smartphones.</span></li>
+          <li><span><b>Installable PWA:</b> manifest + service worker, so it works like a native app on the customer's phone.</span></li>
+          <li><span><b>Direct contact:</b> social media and a contact form with email delivery.</span></li>
+        </ul>
+
+        <div class="chipwrap">
+          <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">PWA</span><span class="chip">Vercel</span>
+        </div>
+
+        <div class="links">
+          <a href="https://github.com/federicodanielabram/7cajas-web">→ source code</a>
+          <a href="https://7cajasdistribuidora.com">→ live site</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Personal projects</p>
+    <p class="lede" style="font-size:15px;margin-bottom:14px;">Outside of work I explore game engines out of technical curiosity. Three projects at different stages, none finished:</p>
+    <ul class="highlights">
+      <li><span><b>Delivery Game</b> — 2D action game in Godot: combo-based combat, procedural traffic, and a drone chase. <a href="https://github.com/federicodanielabram/delivery_game">→ source code</a></span></li>
+      <li><span><b>Moon Cowboy</b> — third-person game in Unreal Engine 5: a motorcycle journey between lunar colonies, oxygen-management mechanic. <a href="https://github.com/federicodanielabram/MoonCowboy">→ source code</a></span></li>
+      <li><span><b>Naciones</b> — idle/strategy web game: a biome-mechanics prototype plus a second version with a Firebase backend. <a href="https://github.com/federicodanielabram/naciones">→ source code</a></span></li>
+    </ul>
+  </section>
+
+  <section>
+    <p class="eyebrow">Experience</p>
+    <div class="xp">
+      <div class="xp-item">
+        <div class="when">2024 — present</div>
+        <div class="what">
+          <h3>Customer Support &amp; Internal Software Development</h3>
+          <div class="org">7 Cajas Distribuidora — national distributor of high-oleic oil (SEDA, LOT brands), branches in 5 provinces</div>
+          <p>Customer service and order management at the La Plata branch. I designed, built, and maintain in production the delivery system and institutional website described above.</p>
+        </div>
+      </div>
+      <div class="xp-item">
+        <div class="when">2018 — 2024</div>
+        <div class="what">
+          <h3>Project and Team Coordinator</h3>
+          <div class="org">República de los Niños, Municipalidad de La Plata</div>
+          <p>Planning and execution of event and presentation schedules; staff management and task assignment.</p>
+        </div>
+      </div>
+      <div class="xp-item">
+        <div class="when">2012 — 2017</div>
+        <div class="what">
+          <h3>Operations &amp; Customer Service Coordinator</h3>
+          <div class="org">Urban Paintball Extremo</div>
+          <p>Event logistics and real-time resolution of operational issues.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:0;">
+    <p class="eyebrow">Education</p>
+    <div class="edu">
+      <div class="edu-item">
+        <div class="label">Software Development — self-taught, ongoing</div>
+        <p>React, JavaScript, SQL/PostgreSQL, Supabase, Godot, Unreal Engine. Validated with my own software in production, not just coursework.</p>
+      </div>
+      <div class="edu-item">
+        <div class="label">AI tools — ongoing study</div>
+        <p>I keep close track of each new generation of AI models and dev tools, and fold them into how I work as soon as they appear.</p>
+      </div>
+      <div class="edu-item">
+        <div class="label">English — private lessons, ongoing</div>
+        <p>Basic-intermediate level, enough to read technical documentation.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Federico Daniel Abram</span>
+    <span>Updated November 2026</span>
+  </footer>
+
+</div>
+
+</body></html>

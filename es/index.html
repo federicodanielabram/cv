@@ -1,0 +1,484 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><title>Federico Daniel Abram</title><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#efede4;
+    --surface:#fbfaf5;
+    --surface-2:#e4e0d2;
+    --ink:#1e2016;
+    --ink-soft:#5a5c4e;
+    --ink-faint:#8b8c79;
+    --line:#d3cfbf;
+    --accent:#b76a14;
+    --accent-ink:#ffffff;
+    --status-wait:#a6791a;
+    --status-done:#3f7a53;
+    --status-drop:#ad4c33;
+    --shadow: 0 1px 0 var(--line);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#17180f;
+      --surface:#1f2016;
+      --surface-2:#2a2b1d;
+      --ink:#ece8d9;
+      --ink-soft:#afac97;
+      --ink-faint:#787a65;
+      --line:#38392a;
+      --accent:#dd9a43;
+      --accent-ink:#1a1206;
+      --status-wait:#d8ae46;
+      --status-done:#5fb57c;
+      --status-drop:#d6755a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#17180f;
+    --surface:#1f2016;
+    --surface-2:#2a2b1d;
+    --ink:#ece8d9;
+    --ink-soft:#afac97;
+    --ink-faint:#787a65;
+    --line:#38392a;
+    --accent:#dd9a43;
+    --accent-ink:#1a1206;
+    --status-wait:#d8ae46;
+    --status-done:#5fb57c;
+    --status-drop:#d6755a;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.5;
+  }
+  .page{
+    max-width:880px;
+    margin:0 auto;
+    padding:40px 24px 80px;
+  }
+  .langswitch{
+    text-align:right;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;
+    margin-bottom:10px;
+  }
+  .langswitch a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);}
+  .langswitch a:hover{color:var(--accent);border-color:var(--accent);}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:0 0 10px;
+  }
+  .eyebrow::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+  h1,h2,h3{
+    font-family:"Big Shoulders Display","Arial Narrow",sans-serif;
+    text-wrap:balance;
+    margin:0;
+    color:var(--ink);
+  }
+  .mono{font-family:"IBM Plex Mono",monospace;}
+  a{color:var(--accent);}
+
+  /* header */
+  header.manifest{
+    border:1px solid var(--line);
+    background:var(--surface);
+    border-top:6px solid var(--accent);
+    padding:28px 30px 24px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:18px;
+    margin-bottom:44px;
+  }
+  header.manifest .id-block h1{
+    font-size:clamp(34px,5.6vw,52px);
+    font-weight:800;
+    letter-spacing:.01em;
+    line-height:.96;
+  }
+  header.manifest .role{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:13px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-top:8px;
+  }
+  header.manifest .contact{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    text-align:right;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+  }
+  header.manifest .contact a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--line);}
+  header.manifest .contact a:hover{color:var(--accent);border-color:var(--accent);}
+
+  section{margin-bottom:46px;}
+
+  .lede{
+    font-size:17.5px;
+    color:var(--ink-soft);
+    max-width:66ch;
+  }
+
+  /* case study card */
+  .case{
+    border:1px solid var(--line);
+    background:var(--surface);
+  }
+  .case + .case{margin-top:20px;}
+  .case-head{
+    padding:22px 26px;
+    border-bottom:1px solid var(--line);
+    background:var(--surface-2);
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .case-head h2{font-size:30px;font-weight:700;}
+  .case.compact .case-head h2{font-size:24px;}
+  .case-meta{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-top:6px;
+    letter-spacing:.02em;
+  }
+  .case-body{padding:26px;}
+  .case-body > * + *{margin-top:26px;}
+  .case-body p{color:var(--ink-soft);max-width:68ch;}
+
+  .flow{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+  .flow li{
+    display:grid;
+    grid-template-columns:30px 1fr;
+    gap:12px;
+    align-items:baseline;
+  }
+  .flow .num{
+    font-family:"IBM Plex Mono",monospace;
+    color:var(--accent);
+    font-weight:500;
+    font-size:13px;
+  }
+  .flow .txt{color:var(--ink-soft);}
+  .flow .txt b{color:var(--ink);font-weight:600;}
+
+  .chipwrap{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    background:var(--surface-2);
+    color:var(--ink-soft);
+  }
+  .stackrow{display:grid;gap:14px;grid-template-columns:repeat(2,1fr);}
+  .stackrow .stackitem{font-size:13px;}
+  .stackrow .stackitem .label{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-faint);
+    display:block;
+    margin-bottom:6px;
+  }
+
+  .highlights{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+  .highlights li{
+    display:grid;
+    grid-template-columns:16px 1fr;
+    gap:12px;
+    color:var(--ink-soft);
+  }
+  .highlights li::before{
+    content:"";
+    width:7px;height:7px;
+    margin-top:7px;
+    background:var(--accent);
+  }
+  .highlights b{color:var(--ink);font-weight:600;}
+
+  .result{
+    border-left:3px solid var(--accent);
+    padding:4px 0 4px 16px;
+    color:var(--ink-soft);
+  }
+  .result strong{color:var(--ink);}
+
+  .links{display:flex;flex-wrap:wrap;gap:18px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;}
+  .links a{text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;}
+  .links a:hover{border-color:var(--accent);}
+
+  .xp{display:grid;gap:22px;}
+  .xp-item{display:grid;grid-template-columns:200px 1fr;gap:18px;}
+  .xp-item .when{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12px;
+    color:var(--ink-faint);
+    font-variant-numeric:tabular-nums;
+    padding-top:3px;
+  }
+  .xp-item .what h3{font-size:19px;font-weight:600;font-family:"IBM Plex Sans";}
+  .xp-item .what .org{color:var(--accent);font-size:13.5px;margin:2px 0 6px;}
+  .xp-item .what p{color:var(--ink-soft);font-size:14.5px;margin:0;max-width:60ch;}
+
+  .edu{display:grid;gap:16px;}
+  .edu-item .label{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--ink-faint);
+    margin-bottom:4px;
+  }
+  .edu-item p{color:var(--ink-soft);margin:0;max-width:62ch;font-size:14.5px;}
+
+  footer{
+    margin-top:50px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11.5px;
+    color:var(--ink-faint);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  @media (max-width:640px){
+    header.manifest{flex-direction:column;align-items:flex-start;}
+    header.manifest .contact{text-align:left;}
+    .stackrow{grid-template-columns:1fr;}
+    .xp-item{grid-template-columns:1fr;gap:4px;}
+  }
+</style>
+</head><body>
+
+<div class="page">
+
+  <div class="langswitch"><a href="../">English</a></div>
+
+  <header class="manifest">
+    <div class="id-block">
+      <h1>Federico Daniel Abram</h1>
+      <div class="role">Forward Deployed Engineer · Desarrollo de software</div>
+    </div>
+    <div class="contact">
+      <span>La Plata, Buenos Aires, Argentina</span>
+      <a href="mailto:federicodanielabram@gmail.com">federicodanielabram@gmail.com</a>
+      <span>+54 2364 689946</span>
+      <a href="https://github.com/federicodanielabram">github.com/federicodanielabram</a>
+      <a href="https://www.linkedin.com/in/federico-daniel-abram-905b31449">linkedin.com/in/federico-daniel-abram-905b31449</a>
+    </div>
+  </header>
+
+  <section>
+    <p class="lede">Construyo software para negocios reales: me meto en la operación hasta entender cómo trabajan de verdad, y después armo el sistema que lo resuelve de punta a punta &mdash; base de datos, backend y la interfaz que usa quien lo opera en el día a día, apoyándome en herramientas de IA de punta para moverme rápido de la idea al sistema funcionando. Mi caso más completo es <b>Logística 7 Cajas</b>: diseñé, construí y mantengo en producción el sistema de reparto que la empresa usa a diario.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Stack</p>
+    <div class="chipwrap">
+      <span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">Vite</span><span class="chip">React Router</span>
+      <span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">SQL</span>
+      <span class="chip">HTML/CSS</span><span class="chip">PWA</span><span class="chip">Vercel</span><span class="chip">GitHub Actions</span>
+      <span class="chip">Godot</span><span class="chip">Unreal Engine</span><span class="chip">C#</span>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Caso de estudio</p>
+    <div class="case">
+      <div class="case-head">
+        <div>
+          <h2>Logística 7 Cajas</h2>
+          <div class="case-meta">SISTEMA PROPIO DE REPARTO · EN PRODUCCIÓN DESDE 2026</div>
+        </div>
+      </div>
+      <div class="case-body">
+
+        <p>7 Cajas Distribuidora es una distribuidora de aceite de girasol alto oleico premium (marcas SEDA y LOT) para el sector gastronómico e industrial. El reparto a comercios se coordinaba por WhatsApp a partir de una planilla de Google Sheets armada a mano, sin saber en tiempo real quién había entregado qué. Diseñé y puse en producción un sistema que no le pide a nadie cambiar su forma de trabajar &mdash; la planilla sigue siendo la fuente de la verdad, y se convierte en un reparto coordinado con seguimiento en vivo, sin ninguna cuenta ni API de Google de por medio.</p>
+
+        <div>
+          <div class="case-meta" style="margin-bottom:12px;">CÓMO FUNCIONA</div>
+          <ol class="flow">
+            <li><span class="num">01</span><span class="txt">El vendedor arma el recorrido como siempre, en una pestaña de Sheets.</span></li>
+            <li><span class="num">02</span><span class="txt">Selecciona todo, copia, y lo pega en el panel web. Un <b>parser propio</b> interpreta el texto y muestra una vista previa antes de confirmar.</span></li>
+            <li><span class="num">03</span><span class="txt">Cada chofer abre la app desde el celular, elige cuáles paradas del día son suyas y las ordena.</span></li>
+            <li><span class="num">04</span><span class="txt">A medida que reparte, el panel se actualiza solo: checklist en vivo por chofer, en espera / entregado / descartado.</span></li>
+          </ol>
+        </div>
+
+        <div class="stackrow">
+          <div class="stackitem">
+            <span class="label">Panel (vendedor / admin)</span>
+            <div class="chipwrap">
+              <span class="chip">React</span><span class="chip">Vite</span><span class="chip">React Router</span><span class="chip">Supabase Auth</span>
+            </div>
+          </div>
+          <div class="stackitem">
+            <span class="label">App del chofer</span>
+            <div class="chipwrap">
+              <span class="chip">React</span><span class="chip">Vite</span><span class="chip">PWA</span><span class="chip">dnd-kit</span>
+            </div>
+          </div>
+          <div class="stackitem">
+            <span class="label">Backend</span>
+            <div class="chipwrap">
+              <span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">Realtime</span><span class="chip">Row-Level Security</span>
+            </div>
+          </div>
+          <div class="stackitem">
+            <span class="label">Infraestructura</span>
+            <div class="chipwrap">
+              <span class="chip">Vercel</span><span class="chip">GitHub Actions</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="case-meta" style="margin-bottom:12px;">DECISIONES DE INGENIERÍA</div>
+          <ul class="highlights">
+            <li><span><b>Parser propio y determinístico</b> (sin IA) que traduce el copy-paste de la planilla real en datos estructurados, aislado en un solo archivo para absorber cambios de formato sin tocar el resto del sistema.</span></li>
+            <li><span><b>Sincronización en tiempo real</b> entre el panel y los choferes vía Supabase Realtime: cada cambio de estado se ve al instante en las dos puntas.</span></li>
+            <li><span><b>Congelamiento de paradas en curso:</b> si el vendedor actualiza el recorrido a mitad de día, no pisa el trabajo que un chofer ya empezó a repartir.</span></li>
+            <li><span><b>Navegación nativa mapeada a mano:</b> el botón/gesto "atrás" de Android está resuelto pantalla por pantalla en toda la PWA, para que nunca rompa el flujo del chofer.</span></li>
+            <li><span><b>Evolución de esquema sin downtime:</b> seis migraciones incrementales en Supabase (multiproducto, pago dividido, nuevos estados) aplicadas sobre una base con datos reales en uso diario.</span></li>
+            <li><span><b>Infraestructura cuidada:</b> keep-alive automatizado por GitHub Actions para que el proyecto gratuito de Supabase nunca se pause por inactividad.</span></li>
+          </ul>
+        </div>
+
+        <p class="result"><strong>En uso diario desde 2026</strong>, reemplazando la coordinación manual por WhatsApp y las planillas armadas a mano. Los choferes eliminaron por completo el uso de WhatsApp para coordinar el reparto, y los administrativos dejaron de tipear mensaje por mensaje: con un botón copian los datos de cada cliente y los pegan, mientras cada uno se va marcando en verde a medida que se procesa, ordenando el paso sin perder de vista qué falta. El historial de reparto, antes cajones llenos de remitos en papel, ahora es digital y consultable, lo que mejora y optimiza la función administrativa. Según reportan los propios choferes, bajó notablemente la carga de tareas que antes eran tediosas &mdash; reconfirmar quién entregó qué, perseguir mensajes dispersos. Cuatro releases etiquetadas (v1.0 → v1.3) e iteración continua a partir de lo que piden ellos mismos.</p>
+
+        <div class="links">
+          <a href="https://github.com/federicodanielabram/logistica-7cajas">→ código fuente</a>
+          <a href="https://7cajasdistribuidora.com">→ sitio de 7 Cajas</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="case compact">
+      <div class="case-head">
+        <div>
+          <h2>Sitio institucional de 7 Cajas</h2>
+          <div class="case-meta">LANDING PAGE · FRONTEND · DOMINIO PROPIO</div>
+        </div>
+      </div>
+      <div class="case-body">
+
+        <p>Además del sistema de reparto, 7 Cajas necesitaba una cara pública para mostrar el producto a clientes potenciales. Construí y mantengo el sitio institucional de la empresa, trabajando junto a un diseñador para la parte visual: HTML/CSS/JS sin framework, con foco en que cargue rápido y se vea bien desde el celular, que es por donde llega la mayoría de las visitas. Hoy corre en producción con dominio propio (7cajasdistribuidora.com).</p>
+
+        <ul class="highlights">
+          <li><span><b>Slider de productos.</b></span></li>
+          <li><span><b>Responsive mobile-first:</b> varias rondas de ajuste fino de layout específicamente para smartphone.</span></li>
+          <li><span><b>PWA instalable:</b> manifest + service worker, para que funcione como app nativa en el celular del cliente.</span></li>
+          <li><span><b>Contacto directo:</b> redes sociales y formulario de contacto con envío de mail.</span></li>
+        </ul>
+
+        <div class="chipwrap">
+          <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">PWA</span><span class="chip">Vercel</span>
+        </div>
+
+        <div class="links">
+          <a href="https://github.com/federicodanielabram/7cajas-web">→ código fuente</a>
+          <a href="https://7cajasdistribuidora.com">→ sitio en vivo</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Proyectos personales</p>
+    <p class="lede" style="font-size:15px;margin-bottom:14px;">Fuera del trabajo exploro motores de juego por curiosidad técnica. Tres proyectos en distintas etapas, ninguno terminado:</p>
+    <ul class="highlights">
+      <li><span><b>Delivery Game</b> — acción 2D en Godot: combate por combos, tráfico procedural y persecución de un dron. <a href="https://github.com/federicodanielabram/delivery_game">→ código fuente</a></span></li>
+      <li><span><b>Moon Cowboy</b> — tercera persona en Unreal Engine 5: travesía en moto entre colonias lunares, mecánica de oxígeno. <a href="https://github.com/federicodanielabram/MoonCowboy">→ código fuente</a></span></li>
+      <li><span><b>Naciones</b> — idle/estrategia web: prototipo de mecánicas de biomas y una segunda versión con backend en Firebase. <a href="https://github.com/federicodanielabram/naciones">→ código fuente</a></span></li>
+    </ul>
+  </section>
+
+  <section>
+    <p class="eyebrow">Experiencia</p>
+    <div class="xp">
+      <div class="xp-item">
+        <div class="when">2024 — actualidad</div>
+        <div class="what">
+          <h3>Atención comercial y desarrollo de software interno</h3>
+          <div class="org">7 Cajas Distribuidora — distribuidora nacional de aceite alto oleico (marcas SEDA, LOT), sucursales en 5 provincias</div>
+          <p>Atención a clientes y gestión de pedidos en la sucursal de La Plata. Diseñé, construí y mantengo en producción el sistema de reparto y el sitio institucional descriptos arriba.</p>
+        </div>
+      </div>
+      <div class="xp-item">
+        <div class="when">2018 — 2024</div>
+        <div class="what">
+          <h3>Coordinador de proyectos y equipos</h3>
+          <div class="org">República de los Niños, Municipalidad de La Plata</div>
+          <p>Planificación y ejecución de cronogramas de eventos y presentaciones; gestión de personal y asignación de tareas.</p>
+        </div>
+      </div>
+      <div class="xp-item">
+        <div class="when">2012 — 2017</div>
+        <div class="what">
+          <h3>Coordinador de operaciones y atención</h3>
+          <div class="org">Urban Paintball Extremo</div>
+          <p>Logística de eventos y resolución de imprevistos operativos en tiempo real.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:0;">
+    <p class="eyebrow">Formación</p>
+    <div class="edu">
+      <div class="edu-item">
+        <div class="label">Desarrollo de software — autodidacta, en curso</div>
+        <p>React, JavaScript, SQL/PostgreSQL, Supabase, Godot, Unreal Engine. Validado con software propio en producción, no solo con cursos.</p>
+      </div>
+      <div class="edu-item">
+        <div class="label">Herramientas de IA — estudio permanente</div>
+        <p>Sigo de cerca cada nueva generación de modelos y herramientas de IA aplicadas a desarrollo, y las incorporo a mi forma de trabajar apenas aparecen.</p>
+      </div>
+      <div class="edu-item">
+        <div class="label">Inglés — particular, en curso</div>
+        <p>Nivel básico-intermedio, suficiente para leer documentación técnica.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Federico Daniel Abram</span>
+    <span>Actualizado noviembre 2026</span>
+  </footer>
+
+</div>
+
+</body></html>
